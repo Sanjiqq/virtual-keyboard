@@ -226,9 +226,11 @@ document.addEventListener('DOMContentLoaded', () => {
     key.addEventListener('mouseup', keyHandler);
     key.addEventListener('mouseout', keyHandler);
   });
-  document.addEventListener('keydown', shiftChange);
-  document.addEventListener('keyup', shiftChange);
-  document.addEventListener('keydown', languageChange);
-  document.addEventListener('keydown', keyHandler);
-  document.addEventListener('keyup', keyHandler);
+  const keyListener = (e) => {
+    shiftChange(e);
+    languageChange(e);
+    keyHandler(e);
+  }
+  document.addEventListener('keydown', keyListener);
+  document.addEventListener('keyup', keyListener);
 });
